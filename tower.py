@@ -37,7 +37,7 @@ def id_class_name(class_id, classes):
         if class_id == key:
             return value
 
-pi_ip = '137.112.156.164'
+client_ip = '137.112.156.164'
 
 resolution = (300, 300)
 #resolution = (640, 480)
@@ -75,7 +75,7 @@ def show_webcam(model, desired_obj):
     time.sleep(1)
 
     to_tracker_socket = socket.socket()
-    to_tracker_socket.connect((pi_ip, 9000))
+    to_tracker_socket.connect((client_ip, 9000))
     to_tracker = to_tracker_socket.makefile('wb')
     image_center = (int(resolution[0]/2), int(resolution[1]/2))
     box_center = image_center
