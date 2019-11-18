@@ -3,7 +3,14 @@
 ## Introduction:
 
 ## Requirements:  
+### host:  
+    * python3-opencv  
+    * numpy  
 
+### SBC:  
+    * python3-opencv  
+    * simple-pid  
+    
 
 ## Setup:  
 ### Models:
@@ -29,10 +36,9 @@ First on server run:
 ```
 ./tower.py <model_name> <object to track>
 ```
+
 Then on the SBC client:  
 ```
 ./eye.py
 ```
-
-
 
