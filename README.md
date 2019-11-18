@@ -4,13 +4,12 @@
 
 ## Requirements:  
 ### host:  
-    * python3-opencv  
-    * numpy  
+* python3-opencv  
+* numpy  
 
 ### SBC:  
-    * python3-opencv  
-    * simple-pid  
-    
+* python3-opencv  
+* simple-pid  
 
 ## Setup:  
 ### Models:
