@@ -22,7 +22,6 @@ With the name of the model you want to download from the following list:
 * inception -- Inception-SSD v2  
 * mobilenet -- MobileNet-SSD v2  
 * resnet -- Faster-RCNN ResNet50  
-* caffe -- CaffeNet  
 * all -- all of the above 
 
 ### IP Address setup:

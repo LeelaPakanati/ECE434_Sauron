@@ -37,29 +37,15 @@ def id_class_name(class_id, classes):
         if class_id == key:
             return value
 
-client_ip = '137.112.101.245'
+client_ip = '137.112.156.130'
 
 resolution = (300, 300)
 #resolution = (640, 480)
 
 
-def show_webcam(model, desired_obj):
-    if model == 'caffe':
-        model = cv2.dnn.readNetFromCaffe('models/MobileNetSSD_deploy.prototxt.txt', 'models/MobileNetSSD_deploy.caffemodel')
-
-    elif model == 'resnet':
-        model = cv2.dnn.readNetFromTensorflow('models/frozen_inference_graph_resnet.pb',
-                                              'models/faster_rcnn_resnet50_coco_2018_01_28.pbtxt')
-    elif model == 'mobilenet':
-        model = cv2.dnn.readNetFromTensorflow('models/frozen_inference_graph_mobilenet.pb',
-                                              'models/ssd_mobilenet_v2_coco_2018_03_29.pbtxt')
-    elif model == 'inception':
-        model = cv2.dnn.readNetFromTensorflow('models/frozen_inference_graph_inception.pb',
-                                              'models/ssd_inception_v2_coco_2017_11_17.pbtxt')
-    else:
-        print("Invalid model")
-        return
-
+def show_webcam(desired_obj):
+    model = cv2.dnn.readNetFromTensorflow('models/frozen_inference_graph_inception.pb',
+                                          'models/ssd_inception_v2_coco_2017_11_17.pbtxt')
     print("--> Model Loaded")
 
     if desired_obj not in classNames.values():
@@ -67,7 +53,7 @@ def show_webcam(model, desired_obj):
         return
     
     from_tracker_socket = socket.socket()
-    from_tracker_socket.bind(('0.0.0.0', 5000))
+    from_tracker_socket.bind(('0.0.0.0', 6969))
     from_tracker_socket.listen(0)
     from_tracker = from_tracker_socket.accept()[0].makefile('rb')
     print("image connection made")
@@ -128,8 +114,6 @@ def show_webcam(model, desired_obj):
                 box_y = best_obj[4] * image_height
                 box_width = best_obj[5] * image_width
                 box_height = best_obj[6] * image_height
-                #if box_y <= 5:
-                #    box_y = -10
                 box_center = (int((box_x + box_width)/2) ,int(1*(box_y + box_height)/2))
                 cv2.line(image, image_center, box_center, (0,255,0), 2)
 
@@ -164,11 +148,10 @@ def show_webcam(model, desired_obj):
             
 
 def main():
-    parser = argparse.ArgumentParser(description='Enter the model to use and the object to detect.')
-    parser.add_argument('model')
+    parser = argparse.ArgumentParser(description='Enter the object to detect.')
     parser.add_argument('object')
     args = parser.parse_args()
-    show_webcam(args.model, args.object)
+    show_webcam(args.object)
 
 
 if __name__ == '__main__':
