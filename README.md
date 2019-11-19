@@ -45,7 +45,7 @@ Upon doing so, enter the server's IP address in eye.py for the value of server_i
 
 First on server run: 
 ```
-./tower.py <model_name> <object to track>
+./tower.py <object to track>
 ```
 
 Then on the SBC client:  
