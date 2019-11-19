@@ -37,13 +37,13 @@ def id_class_name(class_id, classes):
         if class_id == key:
             return value
 
-client_ip = '137.112.156.130'
+client_ip = '137.112.101.249'
 
 resolution = (300, 300)
 #resolution = (640, 480)
 
 
-def show_webcam(desired_obj):
+def show_webcam(desired_obj, port):
     model = cv2.dnn.readNetFromTensorflow('models/frozen_inference_graph_inception.pb',
                                           'models/ssd_inception_v2_coco_2017_11_17.pbtxt')
     print("--> Model Loaded")
@@ -53,7 +53,7 @@ def show_webcam(desired_obj):
         return
     
     from_tracker_socket = socket.socket()
-    from_tracker_socket.bind(('0.0.0.0', 6969))
+    from_tracker_socket.bind(('0.0.0.0', port))
     from_tracker_socket.listen(0)
     from_tracker = from_tracker_socket.accept()[0].makefile('rb')
     print("image connection made")
@@ -145,8 +145,9 @@ def show_webcam(desired_obj):
 def main():
     parser = argparse.ArgumentParser(description='Enter the object to detect.')
     parser.add_argument('object')
+    parser.add_argument('port', type=int)
     args = parser.parse_args()
-    show_webcam(args.object)
+    show_webcam(args.object, args.port)
 
 
 if __name__ == '__main__':

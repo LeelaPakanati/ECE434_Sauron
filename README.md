@@ -19,6 +19,7 @@ The Raspberry Pi takes at least 3 seconds per image to process and the BeagleBon
 * python3
 * opencv-python  
 * simple-pid  
+* wiringpi2
 
 ### Installing Requirements
 Use install_host.sh and install_pi.sh to automatically install requirements.
