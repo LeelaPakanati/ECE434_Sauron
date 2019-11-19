@@ -81,8 +81,6 @@ def show_webcam(desired_obj):
             image = cv2.imdecode(np.frombuffer(read_buf, dtype=np.uint8), cv2.IMREAD_COLOR)
             image = cv2.flip(image, 1)
 
-            #image = cv2.resize(image, resolution)
-            
             image_height, image_width, _d = image.shape
 
             model.setInput(cv2.dnn.blobFromImage(image, size=(300, 300), swapRB=True))
@@ -123,9 +121,6 @@ def show_webcam(desired_obj):
             to_tracker.flush()
             to_tracker.write(struct.pack('<i', box_center[1]))
             to_tracker.flush()
-            #print(str(box_center[0]), ", ", str(box_center[1]))
-
-            #cv2.imshow('image', image)
 
             img_buf = cv2.imencode('.jpg', image)[1]
             to_tracker.write(struct.pack('<L', len(img_buf)))
