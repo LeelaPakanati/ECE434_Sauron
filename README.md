@@ -1,7 +1,7 @@
 # ECE434: Sauron - All Seeing Eye
 
 ## Introduction:
-![Working](WorkingDemo.png)
+![Working](WorkingDemo.jpg)
 ![Side](side.jpg)
 
 We are using tensor flow and Open-CV to detect items in the frame of a web camera.
