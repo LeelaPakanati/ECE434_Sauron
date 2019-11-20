@@ -1,6 +1,9 @@
 # ECE434: Sauron - All Seeing Eye
 
 ## Introduction:
+![Working](WorkingDemo.png)
+![Side](side.jpg)
+
 We are using tensor flow and Open-CV to detect items in the frame of a web camera.
 The camera is mounted onto a tilt pan kit to allow us to track the objects in frame as well.
 Due to the intensive nature of the object detection, we are using a local computation server to process the image and find the objects within it.
